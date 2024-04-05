@@ -1,11 +1,11 @@
-package ru.netology;
+package ru.netology.Logger;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.time.LocalDateTime;
 
-public class Logger {
+public class FileLogger implements Logger {
     public void log(String message, LoggerEnum messageType) {
         File log = new File("info.log");
         if (log.exists()) {

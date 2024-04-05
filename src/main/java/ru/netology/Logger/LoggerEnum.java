@@ -1,4 +1,4 @@
-package ru.netology;
+package ru.netology.Logger;
 
 public enum LoggerEnum {
     MESSAGE,
