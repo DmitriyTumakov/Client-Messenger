@@ -7,12 +7,13 @@ import org.mockito.Mockito;
 import ru.netology.Logger.Logger;
 import ru.netology.Logger.TextLogger;
 
-import java.beans.PropertyEditorSupport;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
+import java.time.LocalDateTime;
 
+import static ru.netology.Client.getMessage;
+import static ru.netology.Client.sendMessage;
 import static ru.netology.Main.*;
 
 public class MainTest {
@@ -87,13 +88,14 @@ public class MainTest {
         Account account = new Account("Dmitriy");
         account.setInChat(true);
         String message = "Hello";
+        LocalDateTime localDateTime = LocalDateTime.now();
 
-        sendMessage(account, out, logger, message);
+        sendMessage(account, out, logger, message, localDateTime);
 
         String name = in.readLine();
         String result = in.readLine();
 
-        Assertions.assertEquals("[Dmitriy] |> Hello", result);
+        Assertions.assertEquals("[Dmitriy] {" + localDateTime + "} |> Hello", result);
     }
 
     @Test
@@ -104,8 +106,9 @@ public class MainTest {
         Account account = new Account("Dmitriy");
         account.setInChat(true);
         String message = "/exit";
+        LocalDateTime localDateTime = LocalDateTime.now();
 
-        sendMessage(account, out, logger, message);
+        sendMessage(account, out, logger, message, localDateTime);
 
         String name = in.readLine();
         String result = in.readLine();
